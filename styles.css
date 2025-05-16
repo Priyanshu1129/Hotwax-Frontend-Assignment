@@ -1,0 +1,281 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.form-container {
+  background: white;
+  padding: 30px;
+  margin: 50px auto;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+form input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+
+
+/* for product and style */
+
+.container {
+  max-width: 100%;
+  /* margin: 0 auto; */
+  /* padding: 0 15px; */
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
+/* Product Card Style */
+.product-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+.product-card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Product Title */
+.product-card h3 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+  height: 40px;
+  overflow: hidden;
+}
+
+/* Category & Price */
+.product-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 4px 0;
+}
+
+.product-card p strong {
+  color: #000;
+  font-size: 1.1rem;
+}
+
+/* Add to Cart Button */
+.product-card button {
+  margin-top: auto;
+  padding: 10px 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product-card button:hover {
+  background-color: #218838;
+}
+
+
+/* header */
+.header {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Header title */
+#logo {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Controls container */
+.header-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Input and select styling */
+.header-controls input[type="text"],
+.header-controls select {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  min-width: 180px;
+  background-color: #fafafa;
+}
+
+.header-controls input[type="text"]:focus,
+.header-controls select:focus {
+  border-color: #28a745;
+}
+
+/* Button and link styling */
+.header-controls button,
+.header-controls a {
+  padding: 10px 16px;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.header-controls button {
+  background-color: #28a745;
+  color: white;
+}
+
+.header-controls button:hover {
+  background-color: #218838;
+}
+
+.header-controls a {
+  background-color: #007bff;
+  color: white;
+  display: inline-block;
+}
+
+.header-controls a:hover {
+  background-color: #0056b3;
+}
+
+/* header */
+
+.total-price {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+
+.spinner {
+  text-align: center;
+  font-size: 1.2em;
+  color: #333;
+  padding: 20px;
+  display: none;
+}
+
+
+/* Cart layout */
+.cart-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Left side: cart items */
+.cart-items {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Right side: summary box */
+.cart-summary {
+  flex: 1;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  align-self: flex-start;
+  font-size: 0.95rem;
+}
+
+.cart-summary h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.cart-summary .price-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #555;
+}
+
+.cart-summary .total-amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  color: #000;
+}
+
+/* Purchase Button */
+.cart-summary .purchase-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #ff5722;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cart-summary .purchase-btn:hover {
+  background-color: #e64a19;
+}

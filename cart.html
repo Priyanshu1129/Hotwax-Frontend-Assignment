@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="header">
+    <h1 id="logo">Your Cart</h1>
+    <a href="index.html">⬅️ Continue Shopping</a>
+  </div>
+
+  <div class="cart-wrapper">
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-summary" id="totalPrice">
+      <!-- Total price breakdown will be rendered here -->
+    </div>
+  </div>
+
+<script>
+  const cartItemsContainer = document.getElementById('cartItems');
+  const totalPriceDiv = document.getElementById('totalPrice');
+
+  function loadCart() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    const userEmail = currentUser.email;
+    const allCarts = JSON.parse(localStorage.getItem("carts")) || {};
+    const cart = allCarts[userEmail] || [];
+
+    cartItemsContainer.innerHTML = '';
+    totalPriceDiv.innerHTML = '';
+
+    let total = 0;
+
+    cart.forEach((item) => {
+      total += item.price * item.quantity;
+
+      const div = document.createElement('div');
+      div.className = 'product-card';
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" />
+        <h3>${item.title}</h3>
+        <p>Quantity: ${item.quantity}</p>
+        <p><strong>$${(item.price * item.quantity).toFixed(2)}</strong></p>
+        <button onclick="removeFromCart(${item.id})">Remove</button>
+      `;
+      cartItemsContainer.appendChild(div);
+    });
+
+    // Build summary
+    const summaryHTML = `
+      <h2>Price Details</h2>
+      ${cart.map(item => `
+        <div class="price-item">
+          <span>${item.title.slice(0, 18)} × ${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('')}
+      <div class="total-amount">
+        Total: $${total.toFixed(2)}
+      </div>
+      <button class="purchase-btn">Place Order</button>
+    `;
+    totalPriceDiv.innerHTML = summaryHTML;
+  }
+
+  function removeFromCart(productId) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const userEmail = currentUser.email;
+    const allCarts = JSON.parse(localStorage.getItem("carts")) || {};
+    let cart = allCarts[userEmail] || [];
+
+    cart = cart.filter(item => item.id !== productId);
+
+    allCarts[userEmail] = cart;
+    localStorage.setItem("carts", JSON.stringify(allCarts));
+
+    loadCart();
+  }
+
+  loadCart();
+</script>
+
+
+</body>
+</html>
