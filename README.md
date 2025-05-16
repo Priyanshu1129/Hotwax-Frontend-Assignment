@@ -1,5 +1,5 @@
 🛒 Basic Frontend E-Commerce Website
-📋 Project Overview
+**📋 Project Overview**
 This is a basic e-commerce website built using HTML, CSS, and JavaScript. The goal of this project was to demonstrate understanding of core JavaScript concepts such as form handling, API integration, local storage management, DOM manipulation, and state handling.
 
 The project includes the following main features:
@@ -40,8 +40,6 @@ Products fetched from public APIs:
 
 https://fakestoreapi.com/products
 
-https://dummyjson.com/docs/products
-
 Displayed fields: Product Name, Image, Price, Category
 
 Filtering & Searching
@@ -62,7 +60,7 @@ Product Name, Image, Quantity, Price
 
 Total Price calculation
 
-✨ Extra Features Added
+**✨ Extra Features Added**
 In addition to the core requirements, the following extra features were implemented:
 
 👥 Multiple User Support
